@@ -55,7 +55,7 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     output_path=output_path,
     datasets=[dataset_config],
     characters = CharactersConfig(
-        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪",
+        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪ '\"-!,.…",
         punctuations="–-_,.:;'‘’“”()!?\"…",
         is_unique=True
     ),
