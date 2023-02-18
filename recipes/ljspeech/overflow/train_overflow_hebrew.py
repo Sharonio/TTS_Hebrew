@@ -34,8 +34,9 @@ audio_config = BaseAudioConfig(
 config = OverflowConfig(  # This is the config that is saved for the future use
     run_name="overflow_saspeech_gold_clean",
     audio=audio_config,
-    batch_size=16,
+    batch_size=12,
     shuffle=True,
+    #start_by_longest=True,
     eval_batch_size=16,
     num_loader_workers=6,
     num_eval_loader_workers=4,
@@ -55,10 +56,12 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     output_path=output_path,
     datasets=[dataset_config],
     characters = CharactersConfig(
-        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪ '\"-!,.…",
-        punctuations="–-_,.:;'‘’“”()!?\"…",
+        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪ '\"-!?,.…",
+        punctuations="–_:;‘’“”()",
         is_unique=True
     ),
+    lr=5e-4,
+    test_sentences=['עכשיו, לאט לאט, נסו לדמיין סופרמרקט.'],
 )
 
 # INITIALIZE THE AUDIO PROCESSOR
