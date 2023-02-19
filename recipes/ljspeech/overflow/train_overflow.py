@@ -52,7 +52,6 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     mixed_precision=True,
     output_path=output_path,
     datasets=[dataset_config],
-    test_sentences=['היי, אני רובו-שאול, מקווה שאני נשמע בסדר.'],
 )
 
 # INITIALIZE THE AUDIO PROCESSOR
