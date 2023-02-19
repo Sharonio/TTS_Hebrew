@@ -36,6 +36,7 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     audio=audio_config,
     batch_size=12,
     shuffle=True,
+    drop_last=True,
     #start_by_longest=True,
     eval_batch_size=16,
     num_loader_workers=6,
