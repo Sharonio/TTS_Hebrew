@@ -40,3 +40,4 @@ gruut[de]==2.2.3
 jamo
 nltk
 g2pkk>=0.1.1
+hebrew
