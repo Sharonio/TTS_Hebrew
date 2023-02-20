@@ -10,6 +10,8 @@ from TTS.tts.models.overflow import Overflow
 from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 
+from hebrew import Hebrew
+
 output_path = os.path.dirname(os.path.abspath(__file__))
 
 # init configs
@@ -86,6 +88,15 @@ train_samples, eval_samples = load_tts_samples(
     eval_split_max_size=config.eval_split_max_size,
     eval_split_size=config.eval_split_size,
 )
+
+# make sure that "achshav, le'at le'at, nasu ledamien supermarket" sentence is not in
+# the training set by forcibly moving it into the evaluation set
+for i, item in enumerate(train_samples):
+    if 'עכשיו, לאט לאט, נסו לדמיין סופרמרקט' in str(Hebrew(item['text']).text_only()):
+        print(f'Found eval sentence in training samples (index {i}), moving to evaluation set')
+        eval_samples.append(item)
+        train_samples.pop(i)
+        break
 
 # INITIALIZE THE MODEL
 # Models take a config object and a speaker manager as input
