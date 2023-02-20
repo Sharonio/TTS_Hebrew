@@ -35,7 +35,7 @@ audio_config = BaseAudioConfig(
 )
 
 config = OverflowConfig(  # This is the config that is saved for the future use
-    run_name="overflow_saspeech_gold_clean",
+    run_name="overflow_saspeech_gold_nikud",
     audio=audio_config,
     batch_size=12,
     shuffle=True,
