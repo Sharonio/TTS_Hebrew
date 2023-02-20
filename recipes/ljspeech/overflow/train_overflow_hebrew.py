@@ -10,13 +10,14 @@ from TTS.tts.models.overflow import Overflow
 from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 
-from hebrew import Hebrew
+from hebrew import Hebrew, chars
 
 output_path = os.path.dirname(os.path.abspath(__file__))
 
 # init configs
 dataset_config = BaseDatasetConfig(
-    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "saspeech_gold_clean/")
+    #formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "saspeech_gold_clean/")
+    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "saspeech_gold_nikud/")
 )
 
 audio_config = BaseAudioConfig(
@@ -59,7 +60,7 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     output_path=output_path,
     datasets=[dataset_config],
     characters = CharactersConfig(
-        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪ '\"-!?,.…",
+        characters="אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789।%$₪ '\"-!?,.…" + ''.join(i.char for i in chars.NIQQUD_CHARS),
         punctuations="–_:;‘’“”()",
         is_unique=True
     ),
