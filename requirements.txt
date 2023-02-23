@@ -25,7 +25,7 @@ pandas
 # deps for training
 matplotlib
 # coqui stack
-trainer==0.0.20
+git+ssh://git@github.com/shenberg/Trainer.git
 # config management
 coqpit>=0.0.16
 # chinese g2p deps
